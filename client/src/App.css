@@ -251,7 +251,7 @@ table {
 .details-text {
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: grey;
   color: white;
   height: 700px;
 }
