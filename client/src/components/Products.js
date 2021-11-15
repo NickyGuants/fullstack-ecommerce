@@ -17,6 +17,7 @@ const Products = () => {
 
     return (
         <section className="container">
+           <h1>Available Vehicles</h1>
             {loading ? (
                 <h2>Loading</h2>
             ) : error ? (
