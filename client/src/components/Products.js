@@ -53,7 +53,7 @@ const Products = () => {
                                     <div class="number">{fetchQuantity()}</div>
                                 <button onClick={ () => dispatch(incrementItem(vehicle.id))}>+</button>  
                                 </div>
-                                <div>
+                                <div className="view-cart">
                                     <Link to="/cart"><button>View Cart</button></Link>
                                 </div>
                             </div>
@@ -62,8 +62,8 @@ const Products = () => {
                                 <button onClick={
                                     () => dispatch(addItem(vehicle.id))
                                 }><AiOutlineShoppingCart className="cart-icon" />Add to Cart </button>
-                                
-                            <Link to={`/details/${vehicle.id}`}><button>View Details</button></Link>
+                                             
+                            <Link to={`${vehicle.id}`}><button>View Details</button></Link>
                             </div>        
                           ) }    
                             </div>
