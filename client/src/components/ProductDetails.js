@@ -1,19 +1,32 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { AiOutlineShoppingCart} from 'react-icons/ai';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux'
 import { listProductDetails } from '../redux/actions/productActions';
+import { addItem, decrementItem, incrementItem, removeItem } from '../redux/actions/cartActions'
 
 const ProductDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
     const productDetails = useSelector(state => state.productDetails);
-    const { loading, error, product } =productDetails;
+    const { loading, error, product } = productDetails;
+    
+    const cartItems = useSelector((state) => state.cart.cartItems);
+    const inCart = cartItems.find((item) => item.id === product.id ? true : false);
    
     useEffect(() => {
         dispatch(listProductDetails(id));
-
     }, [dispatch, id])
+    
+    const fetchQuantity = () => {
+        if (cartItems.length === 0) {
+          return 0;
+        } else {
+          return cartItems?.find((car) => car.id === product.id).quantity;
+        }
+    };
     
     return (
         <section id="details-page">
@@ -53,11 +66,34 @@ const ProductDetails = () => {
                                     <p className="text-success">{product.engineSize}</p>
                                 </div>
                             </div>
-                        </div>
+                            
+                                {inCart ? (
+                                    <div className="buttons">
+                                        <div className="units">
+                                            <button onClick={() => {
+                                                if (fetchQuantity() <= 1) {
+                                                    dispatch(removeItem(product.id));
+                                                } else {
+                                                    dispatch(decrementItem(product.id));
+                                                }
+                                        }}>-</button>
+                                            <div class="number">{ fetchQuantity()}</div>
+                                        <button onClick={ () => dispatch(incrementItem(product.id))}>+</button>  
+                                        </div>
+                                        <div className="view-cart">
+                                            <Link to="/cart"><button>View Cart</button></Link>
+                                        </div>
+                                    </div>
+                                    ) : (
+                                    <div class="add-to-cart" >
+                                        <button onClick={
+                                            () => dispatch(addItem(product.id))
+                                        }><AiOutlineShoppingCart className="cart-icon" />Add to Cart </button>
+                                    </div>        
+                                ) } 
                     </div>
-                )
-            }
-        
+                </div>
+                )}
      </section>
     )
 }
