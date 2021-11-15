@@ -3,11 +3,11 @@ import '../App.css';
 import { Link } from 'react-router-dom'
 //import Search from "./Search";
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
-    //const  cartItems  = useSelector((state) => state.cart.cartItems)
+    const  cartItems  = useSelector((state) => state.cart.cartItems)
     return(
         <div>
             <header>
@@ -16,7 +16,7 @@ const Header = () => {
                 </div>
                 <nav>  
                     <Link to="/">HOME</Link> 
-                    <Link to="/cart" className="cart-link"><AiOutlineShoppingCart id="cart-icon" /><span>{ 0 }</span></Link>
+                    <Link to="/cart" className="cart-link"><AiOutlineShoppingCart id="cart-icon" /><span>{ cartItems.length }</span></Link>
                 </nav>
             </header>
         </div>
