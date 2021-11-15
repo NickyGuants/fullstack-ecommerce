@@ -50,7 +50,7 @@ const Products = () => {
                                             dispatch(decrementItem(vehicle.id));
                                         }
                                 }}>-</button>
-                                    <div class="number">{fetchQuantity()}</div>
+                                <div class="number">{fetchQuantity()}</div>
                                 <button onClick={ () => dispatch(incrementItem(vehicle.id))}>+</button>  
                                 </div>
                                 <div className="view-cart">

@@ -159,6 +159,9 @@ span {
   border: none;
   padding: 10px 10px 10px 10px;
 }
+.number {
+  color: black;
+}
 
 .cart-icon {
   margin-right: 20px;
