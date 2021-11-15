@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Products from './components/Products';
 import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Products />} />
-          <Route path="/:id" element={ <ProductDetails />}/>
+          <Route path="/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>  
       <Footer />
       </div>
