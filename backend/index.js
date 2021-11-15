@@ -2,6 +2,7 @@ const express = require('express');
 const sql = require('mssql');
 const config = require('./config/db');
 const products = require('./routes/products');
+const users = require('./routes/users')
 
 
 const app = express();
@@ -14,7 +15,8 @@ sql.connect(config).then(pool => {
     }
 }).catch(e => console.log(e));
 
-app.use('/api/products', products)
+app.use('/api/products', products);
+app.use('/api/users', users)
 
 
 app.listen(5001);
