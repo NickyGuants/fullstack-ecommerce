@@ -166,6 +166,9 @@ span {
 .cart-icon {
   margin-right: 20px;
 }
+#cart-icon {
+  color: orange;
+}
 
 .units {
   display: flex;
