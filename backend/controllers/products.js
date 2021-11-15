@@ -7,7 +7,7 @@ exports.getProducts = async(req, res) => {
         let query = `select * from products.vehicles`;
         let pool = await sql.connect(config);
         let results = await pool.request().query(query);
-        return res.status(201).send(results.recordset);
+        return res.status(201).json(results.recordset);
         
     } catch (error) {
         console.log(error);
