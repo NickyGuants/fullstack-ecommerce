@@ -32,7 +32,10 @@ const Header = () => {
                         </NavDropdown>
                         <Link to='/logout' onClick={logoutHandler}>Sign Out</Link>
                     </>) :
+                        <>
                         <Link to="/login">Sign In</Link>
+                        <Link to="/register">Sign Up</Link>
+                        </>
                     }   
                 </nav>
             </header>
