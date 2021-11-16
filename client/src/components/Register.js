@@ -48,18 +48,20 @@ const Register = () => {
           {message && <h1>{ message }</h1>}
         {error && <h1>{ error.message }</h1>}
           <Form onSubmit={submitHandler}>
-          <Form.Group controlId='username'>
+          <Form.Group controlId='username' className='child'>
           <Form.Label>Username</Form.Label>
           <Form.Control
+            className="input"
             type='username'
             placeholder='Enter your username'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId='name'>
+        <Form.Group controlId='name' className='child'>
           <Form.Label>Name</Form.Label>
           <Form.Control
+            className="input"
             type='name'
             placeholder='Enter name'
             value={name}
@@ -67,9 +69,10 @@ const Register = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId='email'>
+        <Form.Group controlId='email' className='child'>
           <Form.Label>Email Address</Form.Label>
           <Form.Control
+            className="input"
             type='email'
             placeholder='Enter email'
             value={email}
@@ -77,9 +80,10 @@ const Register = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId='password'>
+        <Form.Group controlId='password' className='child'>
           <Form.Label>Password</Form.Label>
           <Form.Control
+            className="input"
             type='password'
             placeholder='Enter password'
             value={password}
@@ -87,9 +91,10 @@ const Register = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId='confirmPassword'>
+        <Form.Group controlId='confirmPassword' className='child'>
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
+            className="input"
             type='password'
             placeholder='Confirm password'
             value={confirmPassword}
@@ -97,7 +102,7 @@ const Register = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button type='submit' className='primary'>
           Register
         </Button>
       </Form>
