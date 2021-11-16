@@ -27,7 +27,7 @@ exports.addUser = async (req, res) => {
         const numberOfCharacters = new RegExp("^(?=.{8,})");
         const specialCharacters = new RegExp("^(?=.*[!@#$%^&*])");
         //Get data from the request body
-        const { email, username, password, confirmPassword, isAdmin, name} = req.body;
+        const { email, username, password, confirmPassword, name} = req.body;
 
          //ensure the user has entered an email address
         if (!email) {
@@ -41,10 +41,10 @@ exports.addUser = async (req, res) => {
         else if (!password) {
             res.status(406).send("fill in your password");
         }
-        //ensure the user has confirmed their passoword
-        else if (!confirmPassword) {
+        //Done on the frontend
+       /* else if (!confirmPassword) {
             res.status(406).send("You must fill in the confirm password field");
-        }
+        }*/
     
         //Check that the password is eight characters long
         else if (!numberOfCharacters.test(password)) {
@@ -71,22 +71,19 @@ exports.addUser = async (req, res) => {
             );
         }
     
-        //Check that the password is the same as the confirm password field
-        else if (password !== confirmPassword) {
-            res.status(406).send("password and Confirm password entries should match.")
     
         //Use bcrypt to hash the password and add the user to the users array
-        } else {
+         else {
             //hash the received password
             const hashedPassword = await bcrypt.hash(password, 10);
             let pool = await sql.connect(config);
-            let query = `INSERT INTO users(username,name,email,password, isAdmin)VALUES('${username}','${name}','${email}','${hashedPassword}', '${isAdmin}')`;
+            let query = `INSERT INTO users(username,name,email,password)VALUES('${username}','${name}','${email}','${hashedPassword}')`;
             await pool.request().query(query);
             res.status(201).send("user added successfully");
         }
         
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
     }
 }
 //@Login
@@ -120,7 +117,7 @@ exports.login = async (req, res) => {
             });
           }
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 }
 
@@ -138,7 +135,7 @@ exports.getSingleUser = async (req, res) => {
             res.status(201).send(results.recordset[0])
         }
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 }
 
@@ -152,7 +149,7 @@ exports.updateUser = async(req, res) =>{
         await pool.request().query(updateQuery);
         res.status(201).send("user details updated");
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
     }
 }
 
@@ -170,6 +167,6 @@ exports.deleteUser = async (req, res) => {
         }
         res.status(201).send(`user with id ${id} deleted`);
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
     }
 }
