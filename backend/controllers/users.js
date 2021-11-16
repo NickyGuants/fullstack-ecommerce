@@ -41,10 +41,6 @@ exports.addUser = async (req, res) => {
         else if (!password) {
             res.status(406).send("fill in your password");
         }
-        //Done on the frontend
-       /* else if (!confirmPassword) {
-            res.status(406).send("You must fill in the confirm password field");
-        }*/
     
         //Check that the password is eight characters long
         else if (!numberOfCharacters.test(password)) {
