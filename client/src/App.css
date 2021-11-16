@@ -302,6 +302,31 @@ table {
   width: 100%;
   justify-content: center;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px;
+  padding: 10px;
+}
+.child {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  font-size: 20px;
+  width: 100%;
+}
+label {
+  margin-right: 10px;
+  width: 20%;
+}
+.input {
+  width: 80%;
+}
+.primary {
+  width: 100px;
+  margin-left: 600px;
+}
 
 @media only screen and (max-width: 580px) {
   header {
