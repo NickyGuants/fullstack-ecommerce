@@ -108,8 +108,13 @@ exports.login = async (req, res) => {
               }
               jwt.sign({ email: user.email, username: user.username}, process.env.SECRET_KEY, (err, token) => {
                 return res.status(200).json({
-                  message: `${user.username} has been logged in successfully`,
-                  token
+                    message: `${user.username} has been logged in successfully`,
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    isAdmin: user.isAdmin,
+                    username: user.username,
+                    token
                 });
               });
             });
