@@ -34,7 +34,7 @@ nav a {
   text-decoration: none;
   color: white;
   margin: 10px;
-  font-size: 25px;
+  font-size: 20px;
 }
 .cart-link {
   position: relative;
@@ -43,7 +43,7 @@ nav a {
 span {
   position: absolute;
   right: -1;
-  color: orange;
+  color: white;
   font-size: 22px;
 }
 
@@ -171,7 +171,8 @@ span {
   margin-right: 20px;
 }
 #cart-icon {
-  color: orange;
+  color: white;
+  font-size: 22px;
 }
 
 .units {
